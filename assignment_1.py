@@ -18,8 +18,11 @@ import numpy as np
 # load question-answer dataset 
 df = pd.read_csv("data/Question_Answer_Dataset_v1.2_S10.csv")
 
-# load question vector
-ques_vec = np.loadtxt('data/ques_vec.csv', delimiter=',')
+# load question and answer vectors
+
+vector = np.load('data/vector.npz')
+ques_vec = vector['x']
+ans_vec = vector['y']
 
 # load th trained word2vec model 
 trained_w2v = gensim.models.Word2Vec.load("data/w2v.model")
@@ -36,21 +39,8 @@ st.title("Word2vec Question and Answer Chatbot")
 # Store generated responses
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [{"role": "assistant", "content": "How may I help you?"}]
-#else:
-    #st.session_state.pop('messages') # reset session state
-   # st.session_state.messages = [{"role": "assistant", "content": "How may I help you?"}]
 
-# Display chat messages
-#for message in st.session_state.messages:
-    #with st.chat_message(message["role"]):
-        #st.write(message["content"])
-#    if ".png" in message["content"]:
-#        with st.chat_message(message["role"]):
-#            st.image(message["content"])
- #   else:
-#        with st.chat_message(message["role"]):
- #           st.write(message["content"])
-
+# Display chat messagess
 for message in st.session_state.messages:
 	if type(message["content"]) == str:
 		with st.chat_message(message["role"]):
@@ -101,6 +91,6 @@ if st.session_state.messages[-1]["role"] != "assistant":
             ans_idx = find_answer(prompt, ques_vec)
             response = df["Answer"][ans_idx]
             st.write(response)
-            #st.image("data/header-chat-box.png")
+            
     message = {"role": "assistant", "content": response}
     st.session_state.messages.append(message)
