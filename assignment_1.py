@@ -50,16 +50,20 @@ for message in st.session_state.messages:
 			st.image(message["content"])
 
 
-# Function for generating response for query question
+# Function to generate the embedding for query question
 def trained_sentence_vec(sent):
     # Filter out terms that are not in the vocabulary from the question sentence
-    qu_voc = [tm for tm in sent if tm in trained_w2v.wv]
+    # Hint: Use model.wv to get the whole vocabulary
+    qu_voc = ...
     # Get the embedding of the characters
-    emb = np.vstack([trained_w2v.wv[tm] for tm in sent if tm in trained_w2v.wv])
-    # Calculate the vectors of each included word to get the vector of the question
-    ave_vec = np.mean(emb, axis=0)
+    # Hint: Stack arrays in sequence vertically using np.vstack
+    emb = ...
+    # Calculate the arithmetic mean for the vectors of each included word along the column 
+    # to get the vector of the question
+    ave_vec = ...
     return ave_vec
 
+# Function to find the answer through vector search
 def find_answer(qr_sentence, ques_vec):
     # use one query sentence to retrieve answer
     qr_sentence = gensim.utils.simple_preprocess(qr_sentence)
