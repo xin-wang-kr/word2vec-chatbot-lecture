@@ -1,4 +1,4 @@
-# Lecture: Applying embedding approach to chatbot application
+# Lecture: Applying embedding approaches to chatbot application
 ## Content:
 - Word2vec-based question and answer chatbot
 
