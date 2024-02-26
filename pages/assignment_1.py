@@ -18,13 +18,14 @@ import numpy as np
 # load question-answer dataset 
 df = pd.read_csv("data/Question_Answer_Dataset_v1.2_S10.csv")
 
-# load question and answer vectors
-vector = np.load('data/vector.npz')
-ques_vec = vector['x']
-ans_vec = vector['y']
+# load question and answer vectors generated from pre-trained word2vec model
+vector = ...
+ques_vec = ...
+ans_vec = ...
 
 # load th trained word2vec model 
-trained_w2v = gensim.models.Word2Vec.load("data/w2v.model")
+# Hint: You should use the word2vec model pre-trained with both question and answer sets.
+trained_w2v = ...
 
 # App title
 st.set_page_config(page_title="Word2vec Question and Answer Chatbot")
@@ -41,13 +42,8 @@ if "messages" not in st.session_state.keys():
 
 # Display chat messagess
 for message in st.session_state.messages:
-	if type(message["content"]) == str:
-		with st.chat_message(message["role"]):
-			st.write(message["content"])
-	else:
-		with st.chat_message(message["role"]):
-			st.image(message["content"])
-
+    with st.chat_message(message["role"]):
+	st.write(message["content"])
 
 # Function to generate the embedding for query question
 def trained_sentence_vec(sent):
@@ -63,21 +59,44 @@ def trained_sentence_vec(sent):
     return ave_vec
 
 # Function to find the answer through vector search
-def find_answer(qr_sentence, ques_vec):
+### Hint ###
+# Function inputs: qr_sentence, ques_vec, and ans_vec
+# Function output: the index of the optimal answer
+# Function goal: do vector search among both question and answer sets
+###
+def find_answer(qr_sentence, ques_vec, ans_vec):
     # use one query sentence to retrieve answer
     qr_sentence = gensim.utils.simple_preprocess(qr_sentence)
     qr_sent_vec = trained_sentence_vec(qr_sentence)
 
     # perform vector search through similarity comparison
-    n_dim = ques_vec.shape[1]
+    # define the number of feature (vector) dimensions
+    n_dim = ...
+    # define the number of pairs of question and answer
+    n_q_a = ... 
     x = np.vstack(ques_vec).astype(np.float32)
+    y = np.vstack(ans_vec).astype(np.float32)
     q = qr_sent_vec.reshape(1, -1)
     index = faiss.index_factory(n_dim, "Flat", faiss.METRIC_INNER_PRODUCT)
+	
+    # add all questions
     faiss.normalize_L2(x)
     index.add(x)
+	
+    # add all answers
+    faiss.normalize_L2(y)
+    index.add(y)
+	
+    # do vector search for the query sentence
     faiss.normalize_L2(q)
     similarity, idx = index.search(q, k=index.ntotal)
     ans_idx = idx[0][0]
+	
+    # find out the optimal answer index
+    # Hint: if ans_idx is over the number of question-answer pairs, we need to make a if-statement to 
+    # return an answer index align with our question-answer dataset
+    if...
+      
     return ans_idx
 
 
