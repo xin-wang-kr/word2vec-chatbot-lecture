@@ -19,4 +19,4 @@ In this lecture, we will study how to generate text embedding using Gensim and a
 
 ## Related chatbot application example
 - Patient experience chatbot application: https://xin-wang-kr.github.io/px-collection-AI-chatbot/ 
-- App url (you may need to wait a little while for app launching): https://app-ai-chatbot-xwang.streamlit.app/ 
+- App url: https://app-ai-chatbot-xwang.streamlit.app/ 
