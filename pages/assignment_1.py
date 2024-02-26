@@ -1,4 +1,4 @@
-### Assignment instruction
+### Assignment guidance
 # The goal of this assignment is to create a word2vec-based question-answer chatbot application that should be able
 # to give the best answer based on vector search toward both question set and answer set. 
 # Our exercise only showed how to apply question set for vector search. You can follow the hints to generate the chatbot. 
