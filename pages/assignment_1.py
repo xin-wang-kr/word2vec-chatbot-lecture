@@ -74,22 +74,27 @@ def find_answer(qr_sentence, ques_vec, ans_vec):
     n_dim = ...
     # define the number of pairs of question and answer
     n_q_a = ... 
-    x = np.vstack(ques_vec).astype(np.float32)
-    y = np.vstack(ans_vec).astype(np.float32)
+    # define ques_vec as a numpy array that is a float of size 32 bits
+    x = ...
+    # define ans_vec as a numpy array that is a float of size 32 bits
+    y = ...
+    # reshape qr_sent_vec
     q = qr_sent_vec.reshape(1, -1)
-    index = faiss.index_factory(n_dim, "Flat", faiss.METRIC_INNER_PRODUCT)
+    # build the faiss index, n_dim=size of vectors using faiss.index_factory with METRIC_INNER_PRODUCT parameter
+    index = ...
 	
-    # add all questions
+    # add all questions into the faiss index
     faiss.normalize_L2(x)
     index.add(x)
 	
-    # add all answers
+    # add all answers into the faiss index
     faiss.normalize_L2(y)
     index.add(y)
 	
     # do vector search for the query sentence
+    # return similarity score and idx using index.search function
     faiss.normalize_L2(q)
-    similarity, idx = index.search(q, k=index.ntotal)
+    similarity, idx = ...
     ans_idx = idx[0][0]
 	
     # find out the optimal answer index
