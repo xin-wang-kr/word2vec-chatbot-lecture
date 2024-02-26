@@ -19,7 +19,6 @@ import numpy as np
 df = pd.read_csv("data/Question_Answer_Dataset_v1.2_S10.csv")
 
 # load question and answer vectors
-
 vector = np.load('data/vector.npz')
 ques_vec = vector['x']
 ans_vec = vector['y']
