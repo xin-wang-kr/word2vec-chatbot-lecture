@@ -3,7 +3,7 @@
 # to give the best answer based on vector search toward both question set and answer set. 
 # Our exercise only showed how to apply question set for vector search. You can follow the hints to generate the chatbot. 
 # What you need to submit for this assignment: an app url (You should publish your chatbot application on Streamlit Cloud. 
-# Your chatbot assignment will be evaluated based on three query questions:
+# Your chatbot assignment will be evaluated based on query questions listed as below:
 # (1) A year before improving and popularizing the electrophorus, what did Volta become?
 # (2) Does the Hymenoptera order include ants?
 # (3) Who invented the voltaic pile?
