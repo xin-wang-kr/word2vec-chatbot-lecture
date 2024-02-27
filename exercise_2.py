@@ -26,9 +26,6 @@ st.title("Word2vec Question and Answer Chatbot")
 # Store generated responses
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [{"role": "assistant", "content": "How may I help you?"}]
-#else:
-    #st.session_state.pop('messages') # reset session state
-   # st.session_state.messages = [{"role": "assistant", "content": "How may I help you?"}]
 
 # Display chat messages
 for message in st.session_state.messages:
