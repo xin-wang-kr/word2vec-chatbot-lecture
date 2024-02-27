@@ -13,7 +13,7 @@ In this lecture, we will study how to generate text embedding using Gensim and a
 
 ## Assignment
 * Students need to package all necessary components into the whole chatbot application.
-* Students need to publish the packaged chatbot application through [Streamlit Cloud](https://streamlit.io/cloud) and submit app url to Brightspace.
+* Students need to [publish the packaged chatbot application](https://docs.streamlit.io/streamlit-community-cloud/deploy-your-app) through [Streamlit Cloud](https://streamlit.io/cloud) and submit app url to Brightspace.
 * The submitted word2vec-based question-answer chatbot application will be evaluated by query questions, listed in assignment guidance.
 * More details can be found in assignment guidance.
 
