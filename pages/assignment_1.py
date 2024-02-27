@@ -68,6 +68,7 @@ def trained_sentence_vec(sent):
 def find_answer(qr_sentence, ques_vec, ans_vec):
     # use one query sentence to retrieve answer
     qr_sentence = gensim.utils.simple_preprocess(qr_sentence)
+    qr_sentence = token(qr_sentence)
     qr_sent_vec = trained_sentence_vec(qr_sentence)
 
     # perform vector search through similarity comparison
